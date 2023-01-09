@@ -1,0 +1,39 @@
+go.property("run", false)
+go.property("max_delay", 2)
+go.property("dice", 1)
+go.property("dice_id", 1)
+
+local function rolling(self)
+	local num = rnd.roll()
+	local n = 0
+	while num == self.dice and n < 2 do
+		num = rnd.roll()
+		n = n + 1
+	end
+	self.dice = num
+	local d = "dieWhite_border" .. num
+	sprite.play_flipbook(".", d)
+end
+
+function init(self)
+	self.delay = self.max_delay
+end
+function update(self, dt)
+	if self.run then
+		if self.delay > 0 then
+			self.delay = self.delay - 1
+		else
+			rolling(self)
+			self.delay = self.max_delay
+		end
+	end
+end
+function on_message(self, message_id, message, sender)
+	if message_id == hash("roll") then
+		self.run = not self.run
+		if not self.run then
+			print("dice",self.dice_id," : ",self.dice)
+		end
+	end
+end
+
