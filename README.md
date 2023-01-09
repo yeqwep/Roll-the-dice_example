@@ -9,7 +9,8 @@ https://yeqwep.itch.io/roll-the-dice
 
 
 https://user-images.githubusercontent.com/38267288/211289006-7f802a0c-9b8a-4eb8-a953-1efcbda16d13.mp4
-
+# Credits
+Dice img : Kenney
 
 Happy Defolding!
 ---
